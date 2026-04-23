@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Conociendo mis datos
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Carlos A.
+    family-names: Ramirez
+    email: L22212267@tectijuana.edu.mx
+    orcid: 'https://orcid.org/0009-0008-4414-1864'
+    affiliation: TecNM
+repository-code: 'https://github.com/carlosazaelr/Practica1ICD'
+keywords:
+  - Ciencia De Datos
+  - Python
+  - Estadistica
+  - Visualización
+  - Cáncer de Mama
+license: BSD-2-Clause
+version: '1.0'
+date-released: '2026-02-27'
