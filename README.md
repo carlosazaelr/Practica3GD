@@ -1,9 +1,9 @@
-[![Open in MATLAB Online]
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=carlosazaelr/Practica3GD)
 
-# Práctica 2: Caos en sistemas biológicos
+# Práctica 3: Liberación controlada de fármacos por hidrogeles
 
 ## Información de la estudiante
-Paul A. Valle \[05211261]; paul.vt@tijuana.tecn.mx
+Carlos A. Ramirez \[22212267]; L22212267@tectijuana.edu.mx
 
 Gemelos Digitales
 
@@ -20,24 +20,30 @@ La asignatura de Gemelos Digitales forma parte del plan de estudios de la carrer
 En el contexto de sistemas dinámicos que describen sistemas biológicos o fisiológicos, el modelizado in silico es una extensión lógica de la experimentación in vitro controlada, es el resultado natural del gran aumento de la potencia computacional disponible a un costo que disminuye continuamente, combinando las ventajas de la experimentación in vivo e in vitro, sin someterse a las consideraciones éticas y la falta de control asociadas con los experimentos in vivo. A diferencia de los experimentos in vitro, que existen de forma aislada, los modelos in silico permiten incluir un conjunto prácticamente ilimitado de variables y parámetros, lo que hace que los resultados sean más aplicables en problemas del mundo real. La experimentación in silico ha dado lugar al paradigma denominado como "gemelos digitales" (en inglés digital twins); en esencia, los gemelos digitales son una réplica o representación digital de un proceso o sistema del mundo real, donde por replica se refiere a un modelo computacional desarrollado con base en datos experimentales y características especiales que le permiten conectar lo físico con lo virtual con el propósito de mejorar el rendimiento de un sistema, detectar y prevenir fallas, y realizar predicciones sobre su respuesta ante diferentes estímulos o escenarios de operación; una definición más formal establece que: un gemelo digital es un conjunto de modelos adaptativos que emulan el comportamiento de un sistema físico en un sistema virtual obteniendo datos en tiempo real para actualizarse a lo largo de su ciclo de vida; replica al sistema físico para predecir fallas y oportunidades de cambio, prescribir acciones en tiempo real para optimizar y/o mitigar eventos inesperados observando y evaluando el perfil operativo del sistema. En el campo particular de la Biología de Sistemas, un gemelo digital se presenta como un algoritmo o conjunto de algoritmos computacionales desarrollados con base en modelos mecanicistas de un organismo vivo, esto con el objetivo de emular su fisiología para ilustrar su dinámica en el corto y en el largo plazo, así como predecir su respuesta a diferentes estímulos endógenos y exógenos.
 
 ## Objetivo y descripción del sistema
-Un tipo particular de sistema din\'{a}mico es aquel que exhibe diferentes conjuntos compactos invariantes para diferentes valores en sus parámetros y/o condiciones iniciales. A continuación, se presenta un modelo matemático desarrollado con base en el sistema presa-depredador de Lotka-Volterra y el sistema de Itik y Banks 2010, el cual está compuesto por las siguientes tres EDOs de primer orden:
 
-        dx = r1*x*(1 - b1*x) - a12*x*y - a13*x*z; 	(1)
-        dy = r2*y*(1 - b2*y) - a21*x*y;			(2)
-        dz = (r3 - a31)*x*z - d3*z + rho;		(3)
+El objetivo principal es determinar la tasa de liberación del hidrogel N36-2MBA3 con base en los datos experimentales de liberación acumulada. Para comprender la cinética de liberación controlada de este sistema de nanohidrogeles, se ajustarán cuatro modelos matemáticos distintos a los datos experimentales obtenidos a lo largo del tiempo. Los modelos propuestos se describen mediante las siguientes ecuaciones:
 
-donde la Ecuación (1) representa la población de células anormales o patalógicas, la Ecuación (2) la población de células normales o sanas y la Ecuación (3) la población de células efectoras (citotóxicas o NK). La descripción de cada ecuación del sistema se realiza a continuación. Primero, se observa en la estructura de las Ecuaciones (1) y (2) que el desarrollo de las poblaciones de c\'{e}lulas patológicas y células sanas se describe por la ley de crecimiento logístico con tasas de crecimiento definidas por r1 y r2, y las capacidades de carga máxima establecidas por b1^-1 y b2^-1, respectivamente; mientras que en la Ecuación (3) describe el crecimiento de las células efectoras mediante la ley de acción de masas con una tasa r3. Los términos xy representan la competencia
-de recursos entre células patológicas y células sanas, ambas se eliminan a unas tasas dadas por a12 y a21, respectivamente. La eliminación de células patológicas por células efectoras y la supresión inmune se representan por los términos xz a unas tasas dadas por a13 y a31, respectivamente. Adicionalmente, las células efectoras tienen una muerte natural con una tasa d3. El parámetro de control rho representa la aplicación externa de un
-tratamiento de inmunoterapia.
+        x(t) = k*t^n                               (1)
+        x(t) = beta*(1 - exp(-k*t))                (2)
+        x(t) = (p1*t) / (p2 + t)                   (3)
+        dx/dt = p1 - p2*x                          (4)
 
+Donde $x(t)$ representa el porcentaje de liberación acumulada del fármaco en el tiempo $t$. La descripción de cada modelo del sistema se realiza a continuación. Primero, la Ecuación (1) corresponde a la ecuación de Korsmeyer-Peppas, un modelo utilizado empíricamente donde $k$ es una constante que incorpora características estructurales y geométricas de la matriz del hidrogel, y $n$ es el exponente de liberación que define el mecanismo de transporte del fármaco. La Ecuación (2) representa un modelo farmacocinético de primer orden, indicando que la tasa de liberación depende de la concentración, donde $\beta$ indica el porcentaje máximo de liberación y $k$ es la constante de la tasa de liberación.
 
-Palabras clave: Caos; Conjuntos Compactos Invariantes; Condiciones de Estabilidad; Simulaciones Numéricas; Solución de EDOs.
+Por otro lado, los modelos descritos en las Ecuaciones (3) y (4) son enfoques propuestos mediante herramientas de regresión simbólica (algoritmo Eureqa). La Ecuación (3) es una función explícita en el tiempo en forma de fracción racional, dependiente de los parámetros de ajuste $p_1$ y $p_2$. Finalmente, la Ecuación (4) plantea la dinámica de liberación estructurada como una Ecuación Diferencial Ordinaria (EDO) de primer orden, la cual indica que la tasa de cambio de la liberación del fármaco ($\dot{x}$) está gobernada por una relación lineal descendente dictada por $p_1$ y $p_2$.
+
+Palabras clave: Hidrogeles; Liberación controlada; Modelado matemático; Regresión no lineal; Bioestadística.
 
 ## Actividades a realizar
-1. Diseñar un diagrama biológico sobre la dinámica del sistema y la interacción entre sus variables con las figuras de https://bioart.niaid.nih.gov/ o https://www.biorender.com/.
-2. 
-3.
-4.
+1. Visualización de datos experimentales: Importar y graficar los datos experimentales de liberación acumulada del fármaco para los diferentes tipos de nanohidrogeles utilizando MATLAB.
+
+2. Ajuste de modelos matemáticos: Aplicar técnicas de regresión no lineal (utilizando funciones como fitnlm) para ajustar distintos modelos cinéticos (ecuación de Korsmeyer-Peppas, farmacocinética de primer orden y funciones Eureqa) a los datos de la muestra.
+
+3. Simulación de sistemas dinámicos (in silico): Resolver modelos estructurados como Ecuaciones Diferenciales Ordinarias (EDOs) mediante métodos numéricos (como ode45) para simular la trayectoria de liberación en el tiempo.
+
+4. Análisis bioestadístico: Evaluar la bondad de ajuste de cada modelo calculando métricas estadísticas clave, incluyendo la R-cuadrada ordinaria, la Suma Residual de Cuadrados (SSE), el Criterio de Información de Akaike (AICc), el margen de error y los intervalos de confianza.
+
+5. Generación de resultados gráficos: Crear y exportar figuras comparativas (en formato de subgráficas vectoriales) que contrasten visualmente los datos experimentales discretos contra las curvas predictivas continuas generadas por los modelos.
 ...
 
 ## Lista de archivos incluidos en el repositorio
@@ -49,6 +55,5 @@ Palabras clave: Caos; Conjuntos Compactos Invariantes; Condiciones de Estabilida
 ## Referencias
 \[1] P. A. Valle, Syllabus para Gemelos Digitales, Tecnológico Nacional de México / Instituto Tecnológico de Tijuana, Tijuana, B.C., México, 2025. Permalink: https://biomath.xyz/course/
 
-\[2] Itik, M., & Banks, S. P. (2010). Chaos in a three-dimensional cancer model. international Journal of bifurcation and chaos, 20(01), 71-79. https://doi.org/10.1142/S0218127410025417
+\[2] M. A. González-Ayón, J.A. Sañudo-Barajas, L.A. Picos-Corrales, & A. Licea-Claverie, "PNVCL-PEGMA nanohydrogels with tailored transition temperature for controlled delivery of 5-fluorouracil", *Journal of Polymer Science Part A: Polymer Chemistry*, vol. 53, issue 22, pp. 2662-2672, Aug 2015. DOI: https://doi.org/10.1002/pola.27766
 
-\[3] Bryan, Kurt. Differential equations: A toolbox for modeling the world. Simiode, 2022. Permalink: https://www.simiode.org/resources/8307 
